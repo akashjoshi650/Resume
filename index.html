@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akash Joshi — Software Developer & AI Engineer</title>
+  <meta name="description" content="Akash Joshi — Full-stack Software Developer at OnceHub with a B.Tech in CSE (AI & ML). React, Angular, Node.js, Azure, Kubernetes, Computer Vision." />
+  <meta name="theme-color" content="#07070c" />
+  <meta property="og:title" content="Akash Joshi — Software Developer & AI Engineer" />
+  <meta property="og:description" content="Full-stack developer building real products with React, Angular, Node.js and AI." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307070c'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='30' fill='%23c6ff3d'%3EAJ%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Boot loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__term">
+      <div class="loader__lines" id="bootLines"></div>
+      <div class="loader__bar"><span id="bootBar"></span></div>
+    </div>
+  </div>
+
+  <!-- Background layers -->
+  <canvas id="neural" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow" id="glow" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-magnetic>
+      <span class="nav__logo-mark">AJ</span><span class="nav__logo-dot"></span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#about" data-link>About</a>
+      <a href="#experience" data-link>Experience</a>
+      <a href="#skills" data-link>Skills</a>
+      <a href="#projects" data-link>Projects</a>
+      <a href="#education" data-link>Education</a>
+      <a href="#contact" data-link>Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="icon-btn" id="printBtn" title="Save as PDF" aria-label="Save as PDF" data-magnetic>
+        <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme" data-magnetic>
+        <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__status reveal">
+        <span class="pulse"></span> Software Developer @ OnceHub · Open to opportunities
+      </div>
+      <h1 class="hero__name" aria-label="Akash Joshi">
+        <span class="hero__line" data-split>Akash</span>
+        <span class="hero__line hero__line--outline" data-split>Joshi</span>
+      </h1>
+      <p class="hero__role reveal">
+        <span class="mono">&gt;</span> I build <span class="typed" id="typed"></span><span class="caret">_</span>
+      </p>
+      <p class="hero__tag reveal">
+        Full-stack engineer with an <em>AI &amp; ML</em> core — shipping product features in
+        Angular, React &amp; Node, and training models that see.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#contact" class="btn btn--primary" data-magnetic><span>Let's talk</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a href="https://github.com/Jogi-official" target="_blank" rel="noopener" class="btn btn--ghost" data-magnetic><span>GitHub</span></a>
+      </div>
+      <ul class="hero__traits reveal">
+        <li>Hardworking</li><li>Punctual</li><li>Creative</li>
+      </ul>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>React.js</span><i>✦</i><span>Angular</span><i>✦</i><span>Node.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Python</span><i>✦</i><span>YOLOv4</span><i>✦</i><span>Azure</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>MongoDB</span><i>✦</i><span>OpenCV</span><i>✦</i><span>Deep Learning</span><i>✦</i>
+        <span>React.js</span><i>✦</i><span>Angular</span><i>✦</i><span>Node.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Python</span><i>✦</i><span>YOLOv4</span><i>✦</i><span>Azure</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>MongoDB</span><i>✦</i><span>OpenCV</span><i>✦</i><span>Deep Learning</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title">About <span class="serif">me</span></h2>
+      </div>
+      <div class="about">
+        <div class="about__text reveal">
+          <p class="lead">
+            I want to put my skills to work in a responsible role and help the people building
+            <span class="hl">Artificial Intelligence</span>.
+          </p>
+          <p>
+            My B.Tech is in Computer Science with a specialization in AI &amp; Machine Learning. At
+            <strong>DRDO</strong> I worked on long-range object detection, and since January 2023 I've been a
+            Software Developer at <strong>OnceHub</strong>, working across Angular, React, Node.js, Python,
+            Ruby on Rails and .NET, with Azure and Kubernetes on the ops side.
+          </p>
+          <p>
+            I also write about deep learning and AI for <strong>MLearning.ai</strong>, and I enter Kaggle competitions to keep my ML skills in practice.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat card reveal" data-tilt>
+            <div class="stat__num"><span data-count="3" data-suffix="+">0</span></div>
+            <div class="stat__label">Years shipping at OnceHub</div>
+          </div>
+          <div class="stat card reveal" data-tilt>
+            <div class="stat__num"><span data-count="8.0" data-decimals="1">0</span><small>/10</small></div>
+            <div class="stat__label">B.Tech CGPA · UPES</div>
+          </div>
+          <div class="stat card reveal" data-tilt>
+            <div class="stat__num"><span data-count="10">0</span></div>
+            <div class="stat__label">Certifications earned</div>
+          </div>
+          <div class="stat card reveal" data-tilt>
+            <div class="stat__num"><span data-count="6">0</span></div>
+            <div class="stat__label">Languages &amp; stacks in production</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Work <span class="serif">experience</span></h2>
+      </div>
+      <div class="timeline" id="timeline">
+        <div class="timeline__rail"><span class="timeline__fill" id="timelineFill"></span></div>
+
+        <article class="job reveal">
+          <div class="job__dot"></div>
+          <div class="job__card card" data-spot>
+            <header class="job__head">
+              <div>
+                <h3 class="job__company">OnceHub</h3>
+                <p class="job__role">Software Developer 1</p>
+              </div>
+              <span class="badge badge--live"><span class="pulse"></span>Jan 2023 — Present</span>
+            </header>
+            <ul class="job__list">
+              <li>Built and maintained frontend components, improved UI functionality, and worked within a reusable component-based architecture.</li>
+              <li>Full-stack development across <b>Angular, React.js, Node.js, Python, Ruby on Rails</b> and <b>.NET</b>.</li>
+              <li>Worked on backend development with Node.js, API integration and application logic.</li>
+              <li>Worked with <b>Azure Indexers</b>, Azure log monitoring and cloud troubleshooting.</li>
+              <li>Used <b>kubectl</b> to check pod status and diagnose deployment and runtime issues.</li>
+              <li>Built a solid working knowledge of MEAN &amp; MERN stack development with Express, MongoDB and REST APIs.</li>
+              <li>Collaborated on real-world product features, getting hands-on with modern web development workflows.</li>
+            </ul>
+            <div class="chips">
+              <span>Angular</span><span>React</span><span>Node.js</span><span>Rails</span><span>.NET</span><span>Azure</span><span>Kubernetes</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job__dot"></div>
+          <div class="job__card card" data-spot>
+            <header class="job__head">
+              <div>
+                <h3 class="job__company">DRDO</h3>
+                <p class="job__role">Research Intern · Defence Research &amp; Development Organisation</p>
+              </div>
+              <span class="badge">May 2022 — Aug 2022</span>
+            </header>
+            <ul class="job__list">
+              <li>Researched <b>long-range object detection</b> algorithms.</li>
+              <li>Built a custom dataset with manually annotated bounding boxes.</li>
+              <li>Trained and evaluated <b>YOLOv4</b> and <b>Tiny-YOLOv4</b> detectors.</li>
+              <li>Deployed the application using <b>Qt with C++</b>.</li>
+              <li>Internship certificate graded in the <b>Excellent</b> category.</li>
+            </ul>
+            <div class="chips">
+              <span>YOLOv4</span><span>Computer Vision</span><span>C++</span><span>Qt</span><span>Annotation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Tech <span class="serif">arsenal</span></h2>
+      </div>
+      <div class="bento">
+        <div class="bento__item bento__item--wide card reveal" data-spot>
+          <div class="bento__icon">{ }</div>
+          <h3>Languages</h3>
+          <div class="chips chips--lg"><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>C</span><span>C++</span><span>SQL</span></div>
+        </div>
+        <div class="bento__item bento__item--tall card reveal" data-spot>
+          <div class="bento__icon">◎</div>
+          <h3>AI / ML</h3>
+          <div class="chips"><span>Machine Learning</span><span>Deep Learning</span><span>Computer Vision</span><span>OpenCV</span><span>YOLO</span><span>Model Training</span><span>Data Analysis</span><span>Kaggle</span></div>
+          <div class="neuron" aria-hidden="true">
+            <svg viewBox="0 0 200 120">
+              <g class="neuron__edges">
+                <line x1="20" y1="20" x2="100" y2="35"/><line x1="20" y1="20" x2="100" y2="85"/>
+                <line x1="20" y1="60" x2="100" y2="35"/><line x1="20" y1="60" x2="100" y2="85"/>
+                <line x1="20" y1="100" x2="100" y2="35"/><line x1="20" y1="100" x2="100" y2="85"/>
+                <line x1="100" y1="35" x2="180" y2="60"/><line x1="100" y1="85" x2="180" y2="60"/>
+              </g>
+              <g class="neuron__nodes">
+                <circle cx="20" cy="20" r="6"/><circle cx="20" cy="60" r="6"/><circle cx="20" cy="100" r="6"/>
+                <circle cx="100" cy="35" r="7"/><circle cx="100" cy="85" r="7"/><circle cx="180" cy="60" r="9"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="bento__item card reveal" data-spot>
+          <div class="bento__icon">▢</div>
+          <h3>Frontend</h3>
+          <div class="chips"><span>React.js</span><span>Angular</span><span>HTML5</span><span>CSS3</span><span>Tailwind</span><span>Bootstrap</span><span>Responsive</span></div>
+        </div>
+        <div class="bento__item card reveal" data-spot>
+          <div class="bento__icon">⇄</div>
+          <h3>Backend</h3>
+          <div class="chips"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>JWT Auth</span><span>File Uploads</span><span>API Integration</span></div>
+        </div>
+        <div class="bento__item card reveal" data-spot>
+          <div class="bento__icon">⛁</div>
+          <h3>Databases</h3>
+          <div class="chips"><span>MongoDB</span><span>Mongoose</span><span>Firestore</span><span>SQL</span></div>
+        </div>
+        <div class="bento__item bento__item--wide card reveal" data-spot>
+          <div class="bento__icon">☁</div>
+          <h3>Cloud, DevOps &amp; Tools</h3>
+          <div class="chips"><span>Azure</span><span>Azure Indexers</span><span>Log Monitoring</span><span>Kubernetes</span><span>kubectl</span><span>Firebase</span><span>Git</span><span>GitHub</span><span>Postman</span><span>VS Code</span><span>Anaconda</span><span>Excel</span><span>PowerPoint</span></div>
+        </div>
+        <div class="bento__item card reveal" data-spot>
+          <div class="bento__icon">✺</div>
+          <h3>Soft skills</h3>
+          <div class="chips"><span>Problem Solving</span><span>Reliability</span><span>Creativity</span><span>Team Collaboration</span><span>Fast Learning</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Selected <span class="serif">projects</span></h2>
+      </div>
+      <div class="projects">
+        <article class="project card reveal" data-tilt data-spot>
+          <div class="project__top">
+            <span class="project__tag">Minor II · Deep Learning</span>
+            <span class="project__date">Mar — May 2022</span>
+          </div>
+          <h3 class="project__title">Creative Text Generation from Images</h3>
+          <p class="project__desc">A pipeline that looks at an image, writes a caption, then turns the caption into a poem.</p>
+          <ol class="project__steps">
+            <li><span>01</span>Transfer-learning layers + LSTM generate image captions</li>
+            <li><span>02</span>Captions are preprocessed into tokens</li>
+            <li><span>03</span>An LSTM architecture writes poems from those tokens</li>
+          </ol>
+          <div class="chips"><span>CNN</span><span>Transfer Learning</span><span>LSTM</span><span>NLP</span></div>
+          <div class="project__art project__art--poem" aria-hidden="true">
+            <span>image</span><b>→</b><span>caption</span><b>→</b><span>poem</span>
+          </div>
+        </article>
+
+        <article class="project card reveal" data-tilt data-spot>
+          <div class="project__top">
+            <span class="project__tag">Minor I · Optimization</span>
+            <span class="project__date">Aug — Nov 2021</span>
+          </div>
+          <h3 class="project__title">Comparative Analysis of Genetic Operators</h3>
+          <p class="project__desc">Compared how different genetic-algorithm operators perform on a custom dataset.</p>
+          <ol class="project__steps">
+            <li><span>01</span>Implemented a Genetic Algorithm on a custom dataset</li>
+            <li><span>02</span>Applied elitism to improve the selection process</li>
+            <li><span>03</span>Compared operators by number of generations</li>
+          </ol>
+          <div class="chips"><span>Genetic Algorithms</span><span>Elitism</span><span>Optimization</span></div>
+          <div class="project__art project__art--dna" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </article>
+
+        <article class="project card reveal" data-tilt data-spot>
+          <div class="project__top">
+            <span class="project__tag">Research · Computer Vision</span>
+            <span class="project__date">DRDO · 2022</span>
+          </div>
+          <h3 class="project__title">Long-Range Object Detection</h3>
+          <p class="project__desc">Object detection for small, distant targets, trained on a hand-annotated dataset and deployed as a native app.</p>
+          <ol class="project__steps">
+            <li><span>01</span>Custom dataset with manually drawn bounding boxes</li>
+            <li><span>02</span>YOLOv4 vs Tiny-YOLOv4 training &amp; evaluation</li>
+            <li><span>03</span>Native deployment with Qt + C++</li>
+          </ol>
+          <div class="chips"><span>YOLOv4</span><span>Tiny-YOLOv4</span><span>C++</span><span>Qt</span></div>
+          <div class="project__art project__art--scan" aria-hidden="true">
+            <div class="bbox"><em>target 0.94</em></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION + ACHIEVEMENTS -->
+    <section class="section" id="education">
+      <div class="section__head reveal">
+        <span class="section__num">05</span>
+        <h2 class="section__title">Education <span class="serif">&amp; wins</span></h2>
+      </div>
+
+      <div class="edu">
+        <div class="edu__item card reveal" data-spot>
+          <span class="edu__year">2019 — 2022</span>
+          <h3>B.Tech, Computer Science Engineering</h3>
+          <p>Specialization in Artificial Intelligence &amp; Machine Learning</p>
+          <p class="muted">University of Petroleum and Energy Studies</p>
+          <p class="muted small">Electives: Intro to IoT · Wireless Sensor Networks &amp; IoT Standards</p>
+          <div class="ring" style="--p:80"><span>8.0</span><small>CGPA</small></div>
+        </div>
+        <div class="edu__item card reveal" data-spot>
+          <span class="edu__year">2016 — 2018</span>
+          <h3>Class XII</h3>
+          <p class="muted">CBSE</p>
+          <div class="ring" style="--p:91.6"><span>91.6%</span><small>Score</small></div>
+        </div>
+        <div class="edu__item card reveal" data-spot>
+          <span class="edu__year">2014 — 2016</span>
+          <h3>Class X</h3>
+          <p class="muted">CBSE</p>
+          <div class="ring" style="--p:82"><span>82%</span><small>Score</small></div>
+        </div>
+      </div>
+
+      <div class="wins">
+        <h3 class="sub reveal">Accomplishments</h3>
+        <div class="wins__grid">
+          <div class="win card reveal" data-spot>
+            <span class="win__icon">◉</span>
+            <p>Contributed to a research project at <b>DRDO</b> on long-range object detection with YOLOv4 &amp; Tiny-YOLOv4 using custom-annotated datasets.</p>
+          </div>
+          <div class="win card reveal" data-spot>
+            <span class="win__icon">✎</span>
+            <p>Published deep learning &amp; AI blogs as a writer for <b>MLearning.ai</b> Publications.</p>
+          </div>
+          <div class="win card reveal" data-spot>
+            <span class="win__icon">▲</span>
+            <p>Regular competitor in <a href="https://www.kaggle.com/aakashjoshi123" target="_blank" rel="noopener"><b>Kaggle</b></a> ML competitions and hands-on AI projects in model training, data analysis &amp; computer vision.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="certs">
+        <h3 class="sub reveal">Certifications</h3>
+        <ul class="certs__list">
+          <li class="reveal"><a href="https://coursera.org/share/9bbe6d94034dca43c0e0dc8a3e89e3e4" target="_blank" rel="noopener"><span>Becoming a Changemaker: Introduction to Social Innovation</span><em>Coursera</em><i>↗</i></a></li>
+          <li class="reveal"><a href="https://coursera.org/share/43b10c8b3856d1c14e3d6f706d77314d" target="_blank" rel="noopener"><span>Introduction to Artificial Intelligence (AI)</span><em>IBM</em><i>↗</i></a></li>
+          <li class="reveal"><a href="https://coursera.org/share/a634b7af7ddbcdd2cec19c631764d896" target="_blank" rel="noopener"><span>Introduction to Data Science in Python</span><em>Coursera</em><i>↗</i></a></li>
+          <li class="reveal"><a href="https://coursera.org/share/8b54115f8e02d800e4fc0b96a7cf6a2f" target="_blank" rel="noopener"><span>The Data Scientist's Toolbox</span><em>Johns Hopkins</em><i>↗</i></a></li>
+          <li class="reveal"><a href="https://coursera.org/share/823cf5a9cedb1036a8cdb6e384bd688c" target="_blank" rel="noopener"><span>Technology Leadership and Entrepreneurship</span><em>Coursera</em><i>↗</i></a></li>
+          <li class="reveal"><a href="https://coursera.org/share/347e53f773b2de7a08ee6f2c6b1f7c7a" target="_blank" rel="noopener"><span>Applied Plotting, Charting &amp; Data Representation in Python</span><em>U. Michigan</em><i>↗</i></a></li>
+          <li class="reveal"><div><span>Excel Basics for Data Analysis</span><em>IBM</em></div></li>
+          <li class="reveal"><div><span>The Ultimate 2023 Full Stack Web Developer Course</span><em>Udemy</em></div></li>
+          <li class="reveal"><div><span>Node.js, MongoDB, Express — The Complete Bootcamp</span><em>Udemy</em></div></li>
+          <li class="reveal"><div><span>Research Internship — Excellent Category</span><em>DRDO</em></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section__head reveal">
+        <span class="section__num">06</span>
+        <h2 class="section__title">Get in <span class="serif">touch</span></h2>
+      </div>
+      <h2 class="contact__big reveal">
+        Let's build something <span class="serif hl">intelligent</span>.
+      </h2>
+      <div class="contact__grid">
+        <button class="contact__card card reveal" id="copyEmail" data-email="akashjoshiaj.rm@gmail.com" data-spot>
+          <span class="contact__label">Email · click to copy</span>
+          <span class="contact__value">akashjoshiaj.rm@gmail.com</span>
+          <span class="contact__toast" id="toast">Copied ✓</span>
+        </button>
+        <a class="contact__card card reveal" href="tel:+919368306725" data-spot>
+          <span class="contact__label">Phone</span>
+          <span class="contact__value">+91 93683 06725</span>
+        </a>
+        <a class="contact__card card reveal" href="https://www.linkedin.com/in/akash-joshi-906228193" target="_blank" rel="noopener" data-spot>
+          <span class="contact__label">LinkedIn ↗</span>
+          <span class="contact__value">akash-joshi</span>
+        </a>
+        <a class="contact__card card reveal" href="https://github.com/Jogi-official" target="_blank" rel="noopener" data-spot>
+          <span class="contact__label">GitHub ↗</span>
+          <span class="contact__value">Jogi-official</span>
+        </a>
+        <a class="contact__card card reveal" href="https://www.kaggle.com/aakashjoshi123" target="_blank" rel="noopener" data-spot>
+          <span class="contact__label">Kaggle ↗</span>
+          <span class="contact__value">aakashjoshi123</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Akash Joshi</span>
+    <span class="mono">Built from scratch · HTML / CSS / JS</span>
+    <a href="#top" data-magnetic>Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
