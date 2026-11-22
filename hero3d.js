@@ -147,7 +147,7 @@ function start() {
     pulseHaloMat.color.copy(col.hid);
     edgeMat.color.copy(v("--muted"));
     edgeMat.opacity = dark ? 0.16 : 0.22;
-    haloK = dark ? 0.55 : 1;
+    haloK = dark ? 0.55 : 0.6;
     const blend = dark ? THREE.AdditiveBlending : THREE.NormalBlending;
     [pulseHaloMat, ...nodes.map((n) => n.halo.material)].forEach((m) => { m.blending = blend; m.needsUpdate = true; });
   };

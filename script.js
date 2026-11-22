@@ -66,6 +66,43 @@
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
+  /* Card spotlight follows the cursor */
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    $$(".card").forEach((el) => {
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        el.style.setProperty("--my", `${e.clientY - r.top}px`);
+      });
+    });
+  }
+
+  /* Training readout next to the hero network (a looping demo curve) */
+  const tEpoch = $("#tEpoch"), tLoss = $("#tLoss"), tAcc = $("#tAcc"), tSpark = $("#tSpark");
+  if (tEpoch) {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const EPOCHS = 60;
+    const lossAt = (e) => 0.03 + 2.27 * Math.exp(-e / 9) + Math.random() * 0.02;
+    let epoch = 0, history = [];
+    const render = () => {
+      const loss = history[history.length - 1];
+      tEpoch.textContent = String(epoch).padStart(3, "0");
+      tLoss.textContent = loss.toFixed(4);
+      tAcc.textContent = `${Math.min(99.2, 10 + 89 * (1 - Math.exp(-epoch / 10))).toFixed(1)}%`;
+      const max = 2.35;
+      tSpark.setAttribute("points", history.map((l, i) =>
+        `${((i / (EPOCHS - 1)) * 120).toFixed(1)},${(28 - (l / max) * 26).toFixed(1)}`).join(" "));
+    };
+    const step = () => {
+      if (epoch >= EPOCHS) { epoch = 0; history = []; }
+      epoch++;
+      history.push(lossAt(epoch));
+      render();
+    };
+    if (reduce) { for (let i = 0; i < 40; i++) step(); }
+    else { step(); setInterval(() => { if (!document.hidden) step(); }, 260); }
+  }
+
   /* Copy email */
   const copyBtn = $("#copyEmail");
   const toast = $("#toast");
